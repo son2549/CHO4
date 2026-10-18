@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學生作品與活動 | 慈濟大學 經營管理學系</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Royal Muted Gold Theme - Single Internal CSS */
+        :root {
+            --gold-muted-btn: linear-gradient(135deg, #b08226 0%, #e0b85a 50%, #855a0f 100%);
+            --navy-dark: #080f1a;
+            --navy-card: #121c2d;
+            --text-dark: #1f170b;
+            --white: #ffffff;
+            --card-shadow: 0 15px 35px rgba(110, 76, 13, 0.25);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(-45deg, #c4993a, #e0b85a, #8a6218, #c4993a);
+            background-size: 400% 400%;
+            animation: mutedGoldBg 14s ease infinite;
+            color: var(--text-dark);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        @keyframes mutedGoldBg {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Header Area */
+        .top-header {
+            background: linear-gradient(135deg, #080f1a 0%, #121c2d 100%);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 5px solid #b08226;
+            box-shadow: 0 6px 30px rgba(0,0,0,0.4);
+        }
+
+        .top-header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+            background: var(--gold-muted-btn);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .top-header p {
+            color: #e0b85a;
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #b08226;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--navy-dark);
+            font-weight: 700;
+            padding: 10px 26px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover, nav a.active {
+            background: var(--gold-muted-btn);
+            color: #080f1a;
+            box-shadow: 0 4px 15px rgba(138, 98, 24, 0.4);
+        }
+
+        /* Container & Layout */
+        .container {
+            max-width: 1140px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 1.85rem;
+            color: var(--navy-dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 4px;
+            background: var(--gold-muted-btn);
+            border-radius: 2px;
+        }
+
+        /* Category Filter Buttons (JS Driven) */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1.5px solid #8a6218;
+            color: var(--navy-dark);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--navy-dark);
+            color: #e0b85a;
+            border-color: var(--navy-dark);
+            box-shadow: 0 4px 12px rgba(8, 15, 26, 0.3);
+        }
+
+        /* Works Grid Layout */
+        .grid-works {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .work-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s ease;
+            border: 1.5px solid #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .work-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 45px rgba(110, 76, 13, 0.4);
+            border-color: #8a6218;
+            background: var(--white);
+        }
+
+        .work-img-box {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background-color: #e0b85a;
+            position: relative;
+        }
+
+        .work-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .work-card:hover .work-img-box img {
+            transform: scale(1.06);
+        }
+
+        .work-info {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            align-self: flex-start;
+            background: #e0b85a;
+            color: #080f1a;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            border: 1px solid #8a6218;
+        }
+
+        .work-info h3 {
+            color: #8a6218;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+
+        .work-info p {
+            color: var(--text-dark);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        /* AI Prompt Log (Bonus) */
+        .ai-log-section {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border: 2px dashed #8a6218;
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+
+        .ai-log-section h4 {
+            color: #8a6218;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: #080f1a;
+            color: var(--white);
+            text-align: center;
+            padding: 28px 20px;
+            margin-top: 60px;
+            font-size: 0.9rem;
+            border-top: 4px solid #b08226;
+        }
+
+        /* Responsive Fix */
+        @media (max-width: 768px) {
+            .top-header h1 { font-size: 1.7rem; }
+            nav { flex-direction: column; align-items: center; gap: 8px; }
+            .grid-works { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="top-header">
+        <h1>學生作品與活動展覽館</h1>
+        <p>Student Projects & Activities | TCU Department of Business Management</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">🏛️ 系所簡介</a>
+        <a href="studentworks.html" class="active">🎓 學生作品與活動</a>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="container">
+        
+        <div class="section-header">
+            <h2>多元實務與成果展現</h2>
+        </div>
+
+        <!-- Filter Buttons (JavaScript Triggered) -->
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterWorks('all')">🌟 全部展示</button>
+            <button class="filter-btn" onclick="filterWorks('practice')">☕ 創業實務</button>
+            <button class="filter-btn" onclick="filterWorks('international')">🌏 國際交流</button>
+            <button class="filter-btn" onclick="filterWorks('diverse')">🎨 多元學習</button>
+        </div>
+
+        <!-- Works & Activities Grid -->
+        <div class="grid-works" id="worksGrid">
+            
+            <!-- Item 1: 知足咖啡館 -->
+            <div class="work-card" data-category="practice">
+                <div class="work-img-box">
+                    <img src="graph/work1.jpg" onerror="this.src='https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80'" alt="知足咖啡館營運體驗">
+                </div>
+                <div class="work-info">
+                    <div>
+                        <span class="badge">創業體驗</span>
+                        <h3>知足咖啡館實務營運與實習</h3>
+                        <p>每週五由經管系學生親自營運知足二館咖啡館，學習進貨盤點、成本控制、行銷推廣等完整創業實務。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2: 印尼班發表 -->
+            <div class="work-card" data-category="international">
+                <div class="work-img-box">
+                    <img src="graph/work2.jpg" onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80'" alt="印尼班成果發表">
+                </div>
+                <div class="work-info">
+                    <div>
+                        <span class="badge">國際交流</span>
+                        <h3>印尼專班學生成果發表會</h3>
+                        <p>展現學生跨國行銷創意、英語簡報能力與多媒體影像運用，促進不同國籍學生間的深厚交流。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3: 花農農業實習 -->
+            <div class="work-card" data-category="practice">
+                <div class="work-img-box">
+                    <img src="graph/work3.jpg" onerror="this.src='https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80'" alt="農業經濟與行銷體驗">
+                </div>
+                <div class="work-info">
+                    <div>
+                        <span class="badge">農業行銷</span>
+                        <h3>國立花蓮高農農業實務課程</h3>
+                        <p>為學習農業經濟與農業行銷，學生親自參與作物種植與農藝過程，體會在地產業營運細節。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 4: 多元才藝與體育 -->
+            <div class="work-card" data-category="diverse">
+                <div class="work-img-box">
+                    <img src="graph/work4.jpg" onerror="this.src='https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=800&q=80'" alt="多元發展學習鋼琴">
+                </div>
+                <div class="work-info">
+                    <div>
+                        <span class="badge">多元發展</span>
+                        <h3>全人教育與鋼琴音樂彈奏</h3>
+                        <p>注重學生全方位發展，鼓勵學習音樂藝術與參與排球競賽，培養團隊合作精神與休閒涵養。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 5: 專題發表與交流 -->
+            <div class="work-card" data-category="practice">
+                <div class="work-img-box">
+                    <img src="graph/work5.jpg" onerror="this.src='https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80'" alt="專題發表會">
+                </div>
+                <div class="work-info">
+                    <div>
+                        <span class="badge">學術專題</span>
+                        <h3>經營管理專題發表與競賽</h3>
+                        <p>不同年級與國際學生組隊，針對真實企業個案進行深度研討、簡報展演與創新提案競賽。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 6: 大愛新聞報導 -->
+            <div class="work-card" data-category="international">
+                <div class="work-img-box">
+                    <img src="graph/work6.jpg" onerror="this.src='https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80'" alt="大愛新聞報導">
+                </div>
+                <div class="work-info">
+                    <div>
+                        <span class="badge">新聞專訪</span>
+                        <h3>大愛新聞：國際新生融入與跨文化學習</h3>
+                        <p>新聞報導來自印尼之國際新生於慈大經管系學習農業經營與行銷，學校尊重信仰並提供無微不至的關懷。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- AI Log Section (Bonus Marks) -->
+        <div class="ai-log-section">
+            <h4>🤖 AI 協作紀錄 (Bonus +10%)</h4>
+            <p><strong>Prompt：</strong> 請擷取 https://mdm.tcu.edu.tw/p/412-1021-3692.php 網頁內容，重新設計成單一 HTML 檔案 (含 Internal CSS & Internal JS)，並符合 Royal Muted Gold 色彩美學。</p>
+            <p><strong>筆記：</strong> 本網頁已完整整合原網頁之知足咖啡館經營、印尼班成果發表、花農農業體驗、多元發展與新聞報導，並加入 JS 動態分類篩選功能。</p>
+        </div>
+
+    </div>
+
+    <!-- Footer Area -->
+    <footer>
+        <p>&copy; 2026 慈濟大學經營管理學系 版權所有 | TCU Department of Business Management</p>
+    </footer>
+
+    <!-- Internal JavaScript (All in single HTML) -->
+    <script>
+        function filterWorks(category) {
+            // Update Active Class on Buttons
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Filter Cards
+            const cards = document.querySelectorAll('.work-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
