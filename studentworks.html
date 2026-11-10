@@ -307,7 +307,7 @@
             <!-- School Banner Image (banner.jpg) -->
             <div class="work-card" data-category="practice" style="grid-column: 1 / -1;">
                 <div class="work-img-box" style="height: 300px;">
-                    <img src="graph/banner.jpg" alt="智慧永續管理學院">
+                    <img src="graph/graph/banner.jpg" alt="智慧永續管理學院">
                 </div>
                 <div class="work-info">
                     <div>
@@ -321,7 +321,7 @@
             <!-- Item 1: Waffles (G001.jpg) -->
             <div class="work-card" data-category="practice">
                 <div class="work-img-box">
-                    <img src="graph/G001.jpg" alt="學生作品 - 創意餐飲">
+                    <img src="graph/graph/G001.jpg" alt="學生作品 - 創意餐飲">
                 </div>
                 <div class="work-info">
                     <div>
@@ -335,7 +335,7 @@
             <!-- Item 2: Bamboo Cooking (G002.jpg) -->
             <div class="work-card" data-category="diverse">
                 <div class="work-img-box">
-                    <img src="graph/G002.jpg" alt="活動 - 在地文化體驗">
+                    <img src="graph/graph/G002.jpg" alt="活動 - 在地文化體驗">
                 </div>
                 <div class="work-info">
                     <div>
@@ -349,7 +349,7 @@
             <!-- Item 3: Lecture/Class (G003.jpg) -->
             <div class="work-card" data-category="diverse">
                 <div class="work-img-box">
-                    <img src="graph/G003.jpg" alt="活動 - 專題講座">
+                    <img src="graph/graph/G003.jpg" alt="活動 - 專題講座">
                 </div>
                 <div class="work-info">
                     <div>
@@ -361,34 +361,6 @@
             </div>
 
         </div>
-        <!-- AI Log Section (Bonus Marks) -->
-        <div class="ai-log-section">
-            <h4>🤖 AI 協作紀錄 (Bonus +10%)</h4>
-            <p><strong>Prompt：</strong> 請擷取 https://mdm.tcu.edu.tw/p/412-1021-3692.php 網頁內容，重新設計成單一 HTML 檔案 (含 Internal CSS & Internal JS)，並符合 Royal Muted Gold 色彩美學。</p>
-            <p><strong>筆記：</strong> 本網頁已完整整合原網頁之知足咖啡館經營、印尼班成果發表、花農農業體驗、多元發展與新聞報導，並加入 JS 動態分類篩選功能。</p>
-        </div>
-
-    </div>
-
-    <!-- Footer Area -->
-    <footer>
-        <p>&copy; 2026 慈濟大學經營管理學系 版權所有 | TCU Department of Business Management</p>
-    </footer>
-
-    <!-- Internal JavaScript (All in single HTML) -->
-    <script>
-        function filterWorks(category) {
-            // Update Active Class on Buttons
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            // Filter Cards
-            const cards = document.querySelectorAll('.work-card');
-            cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.style.display = 'flex';
-                } else {
                     card.style.display = 'none';
                 }
             });
